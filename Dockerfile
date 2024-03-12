@@ -7,9 +7,6 @@ WORKDIR /app
 # Copy the local Go source code into the container
 COPY demo.go .
 
-# Build the Go binary inside the container
-RUN go build -o demo .
-
 # Expose the port on which the Go application will run (if applicable)
 EXPOSE 8080
 
