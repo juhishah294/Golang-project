@@ -1,17 +1,17 @@
-# Use the official golang image as the base image
+# Use the official Golang image as a base image
 FROM golang:latest
 
 # Set the working directory inside the container
-WORKDIR /app
+WORKDIR /go/src/app
 
-# Copy the local Go source code into the container
-COPY demo.go .
+# Copy the local package files to the container's workspace
+COPY . .
 
-# Build the Go binary inside the container
-RUN go build -o demo .
+# Build the Go application
+RUN go build -o app .
 
-# Expose the port on which the Go application will run (if applicable)
+# Expose port 8080 to the outside world
 EXPOSE 8080
 
-# Command to run the Go binary
-CMD ["go", "run", "demo.go"]
+# Command to run the executable
+CMD ["./app"]
